@@ -157,7 +157,7 @@ class CacheRedisStoreTest extends TestCase
         $this->assertFalse($redis->isLocked('foo'));
 
         $redis->getRedis()->shouldReceive('set')->once()->with('prefix:foo', 'owner', 'EX', 10, 'NX')->andReturn(true);
-        $lock = $redis->lock('foo', 10, 'owner');
+        $lock = $redis->lock(``'foo', 10, 'owner');
         $lock->acquire();
 
         $redis->getRedis()->shouldReceive('get')->once()->with('prefix:foo')->andReturn('owner');

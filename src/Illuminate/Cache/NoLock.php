@@ -25,6 +25,16 @@ class NoLock extends Lock
     }
 
     /**
+     * Determine if the current lock exists.
+     *
+     * @return bool
+     */
+    public function exists()
+    {
+        return true;
+    }
+
+    /**
      * Releases this lock in disregard of ownership.
      *
      * @return void

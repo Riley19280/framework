@@ -74,6 +74,16 @@ class CacheLock extends Lock
     }
 
     /**
+     * Determine if the current lock exists.
+     *
+     * @return bool
+     */
+    public function exists()
+    {
+        return $this->store->get($this->name) !== null;
+    }
+
+    /**
      * Returns the owner value written into the driver for this lock.
      *
      * @return mixed

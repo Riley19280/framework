@@ -54,6 +54,16 @@ class MemcachedLock extends Lock
     }
 
     /**
+     * Determine if the current lock exists.
+     *
+     * @return bool
+     */
+    public function exists()
+    {
+        return $this->memcached->get($this->name) !== false;
+    }
+
+    /**
      * Releases this lock in disregard of ownership.
      *
      * @return void

@@ -56,6 +56,16 @@ class DynamoDbLock extends Lock
     }
 
     /**
+     * Determine if the current lock exists.
+     *
+     * @return bool
+     */
+    public function exists()
+    {
+        return $this->dynamo->get($this->name) !== null;
+    }
+
+    /**
      * Release this lock in disregard of ownership.
      *
      * @return void

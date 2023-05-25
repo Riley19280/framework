@@ -126,6 +126,18 @@ class DatabaseLock extends Lock
     }
 
     /**
+     * Determine if the current lock exists.
+     *
+     * @return bool
+     */
+    public function exists()
+    {
+        return $this->connection->table($this->table)
+            ->where('key', $this->name)
+            ->exists();
+    }
+
+    /**
      * Returns the owner value written into the driver for this lock.
      *
      * @return string
